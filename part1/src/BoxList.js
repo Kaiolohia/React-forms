@@ -1,0 +1,28 @@
+import React, { useState } from "react";
+import Box from "./Box";
+import NewBoxForm from "./NewBoxForm";
+
+
+const BoxList = () => {
+    const [Boxes, setBoxes] = useState([])
+    const [Id, setId] = useState(0)
+    const addBox = box => {
+        let newBox = {...box, id: idx()}
+        setBoxes(boxes => [...boxes, {newBox}])
+    }
+    const idx = () => {
+        setId(Id + 1)
+        return Id
+    }
+    return (
+        <>
+            <NewBoxForm submit={addBox}/>
+            {Boxes.map(b => (
+                <Box bg={b.newBox.background} width={`${b.newBox.width}px`} height={`${b.newBox.height}px`} key={b.newBox.id}/>
+            ))}
+        </>
+    )
+} 
+
+
+export default BoxList
