@@ -8,7 +8,10 @@ const Box = props => {
         width : props.width
     }
     return (
-    <div className="box" style={style}></div>
+    <>
+        <div className="box" style={style}></div>
+        <button onClick={() => props.remove(props.id)}>X</button>
+    </>
     )
 }
 
